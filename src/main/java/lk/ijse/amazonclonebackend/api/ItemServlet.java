@@ -1,26 +1,34 @@
 package lk.ijse.amazonclonebackend.api;
 
 import java.io.*;
+import java.sql.Connection;
+import java.sql.SQLException;
 
+import jakarta.annotation.Resource;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
-@WebServlet(name = "itemServlet", value = "/item")
+import javax.sql.DataSource;
+
+@WebServlet(name = "itemServlet", value = "/item", loadOnStartup = 0)
 public class ItemServlet extends HttpServlet {
-    private String message;
+
+
+    @Resource(name = "java:comp/env/jdbc/amazon")
+    private DataSource dataSource;
 
     public void init() {
-        message = "Hello World!";
+        try{
+            Connection connection = dataSource.getConnection();
+            System.out.println(connection);
+            connection.close();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
-
-        // Hello
-        PrintWriter out = response.getWriter();
-        out.println("<html><body>");
-        out.println("<h1>" + message + "</h1>");
-        out.println("</body></html>");
     }
 
     public void destroy() {
