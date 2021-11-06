@@ -1,12 +1,12 @@
-package lk.ijse.amazonclonebackend;
+package lk.ijse.amazonclonebackend.api;
 
 import java.io.*;
 
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
-@WebServlet(name = "helloServlet", value = "/hello")
-public class HelloServlet extends HttpServlet {
+@WebServlet(name = "itemServlet", value = "/item")
+public class ItemServlet extends HttpServlet {
     private String message;
 
     public void init() {
