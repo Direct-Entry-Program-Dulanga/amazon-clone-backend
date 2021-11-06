@@ -1,5 +1,6 @@
 package lk.ijse.amazonclonebackend.dto;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 public class ItemDTO {
@@ -11,8 +12,36 @@ public class ItemDTO {
     private BigDecimal unitPrice;
     private String description;
 
-    public enum Rating{
-        FIRST, SECOND, THIRD, FOURTH, FIFTH;
+    public enum Rating implements Serializable {
+        FIRST(1), SECOND(2), THIRD(3), FOURTH(4), FIFTH(5);
+
+        int rating;
+
+        Rating(int rating){
+            this.rating = rating;
+        }
+
+        public int toNumber(){
+            return this.rating;
+        }
+
+        @Override
+        public String toString(){
+            return rating + "";
+        }
+    }
+
+    public ItemDTO() {
+    }
+
+    public ItemDTO(String code, String title, String image, Rating rating, int qty, BigDecimal unitPrice, String description) {
+        this.code = code;
+        this.title = title;
+        this.image = image;
+        this.rating = rating;
+        this.qty = qty;
+        this.unitPrice = unitPrice;
+        this.description = description;
     }
 
     public String getCode() {
@@ -70,4 +99,18 @@ public class ItemDTO {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        return "ItemDTO{" +
+                "code='" + code + '\'' +
+                ", title='" + title + '\'' +
+                ", image='" + image + '\'' +
+                ", rating=" + rating +
+                ", qty=" + qty +
+                ", unitPrice=" + unitPrice +
+                ", description='" + description + '\'' +
+                '}';
+    }
+
 }
