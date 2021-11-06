@@ -33,9 +33,9 @@ public class ItemService {
                         rst.getBigDecimal("unit_price"),
                         rst.getString("description"));
             }
+            return items;
         }catch (SQLException e){
-            e.printStackTrace();
+            throw new RuntimeException("Failed to fetch item from the DB", e);
         }
-        return null;
     }
 }
