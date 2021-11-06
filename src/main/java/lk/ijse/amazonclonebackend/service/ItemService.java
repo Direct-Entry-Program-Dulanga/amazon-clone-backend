@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ItemService {
 
-    private Connection connection;
+    private final Connection connection;
 
     public ItemService(Connection connection){
         this.connection = connection;
