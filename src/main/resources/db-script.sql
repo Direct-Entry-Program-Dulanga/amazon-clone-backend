@@ -58,3 +58,5 @@ VALUES ('I001',
         3,
         39.99,
         8, '');
+
+SELECT * FROM item;
