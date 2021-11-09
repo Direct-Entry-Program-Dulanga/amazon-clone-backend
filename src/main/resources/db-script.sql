@@ -11,14 +11,15 @@ CREATE TABLE item
 );
 
 DROP TABLE IF EXISTS `order`;
-CREATE TABLE `order`(
-    id INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE `order`
+(
+    id INT AUTO_INCREMENT PRIMARY KEY ,
     date DATE NOT NULL
 );
 
 DROP TABLE IF EXISTS order_detail;
-
-CREATE TABLE order_detail(
+CREATE TABLE order_detail
+(
     order_id INT NOT NULL,
     code VARCHAR(10) NOT NULL,
     qty INT NOT NULL,
@@ -75,5 +76,3 @@ VALUES ('I001',
         3,
         39.99,
         8, '');
-
-SELECT * FROM item;
